@@ -1,18 +1,3 @@
-MariaDB [(none)]> create database myTestDB;
-ERROR 1044 (42000): Access denied for user ''@'localhost' to database 'mytestdb'
-MariaDB [(none)]> mysql -u root -p
-    ->
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p' at line 1
-MariaDB [(none)]> mysql -u root -p
-    -> exit
-    ->
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p
-exit' at line 1
-MariaDB [(none)]> exit
-Bye
-
 719531@203-IMAC08 c:\xampp
 # mysql -u root -p
 Enter password:
