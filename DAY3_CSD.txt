@@ -1210,5 +1210,3 @@ MariaDB [mytestDB]> select * from manufacturers;
 |    7 | xyz             |
 +------+-----------------+
 7 rows in set (0.00 sec)
-
-MariaDB [mytestDB]>
