@@ -1,0 +1,1210 @@
+
+Setting environment for using XAMPP for Windows.
+719531@203-IMAC03 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| db_test_dhruvi     |
+| information_schema |
+| mysql              |
+| mytestdb           |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.03 sec)
+
+MariaDB [(none)]> use mytestdb
+Database changed
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| students           |
+| t                  |
++--------------------+
+2 rows in set (0.02 sec)
+
+MariaDB [mytestdb]> Create table Manufacturers(Code integer(3) PRIMARY KEY, Name Varchar(50) NOT NULL);
+Query OK, 0 rows affected (0.28 sec)
+
+MariaDB [mytestdb]> INSERT INTO manufacturers (Code, Name) values (001,'Laptop') ;
+Query OK, 1 row affected (0.12 sec)
+
+MariaDB [mytestdb]> insert into products (code, name, price, manufacturers) values (001, 'Laptop', 45000, 'Dell');
+ERROR 1146 (42S02): Table 'mytestdb.products' doesn't exist
+MariaDB [mytestdb]> create table products(Code integer (3) primary key,Name varchar(50), Price float, manufacturers integer references manufacturers(Code));
+Query OK, 0 rows affected (0.27 sec)
+
+MariaDB [mytestdb]> insert into products (code, name, price, manufacturers) values (001, 'Laptop', 45000, 'Dell');
+Query OK, 1 row affected, 1 warning (0.11 sec)
+
+MariaDB [mytestdb]> select * from product;
+ERROR 1146 (42S02): Table 'mytestdb.product' doesn't exist
+MariaDB [mytestdb]> select * from products;
++------+--------+-------+---------------+
+| Code | Name   | Price | manufacturers |
++------+--------+-------+---------------+
+|    1 | Laptop | 45000 |             0 |
++------+--------+-------+---------------+
+1 row in set (0.02 sec)
+
+MariaDB [mytestdb]> select * from manufaturers;
+ERROR 1146 (42S02): Table 'mytestdb.manufaturers' doesn't exist
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| manufacturers      |
+| products           |
+| students           |
+| t                  |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+--------+
+| Code | Name   |
++------+--------+
+|    1 | Laptop |
++------+--------+
+1 row in set (0.00 sec)
+
+MariaDB [mytestdb]> drop table manufacturers;
+Query OK, 0 rows affected (0.38 sec)
+
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| products           |
+| students           |
+| t                  |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+--------+-------+---------------+
+| Code | Name   | Price | manufacturers |
++------+--------+-------+---------------+
+|    1 | Laptop | 45000 |             0 |
++------+--------+-------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [mytestdb]> drop table products;
+Query OK, 0 rows affected (0.27 sec)
+
+MariaDB [mytestdb]> Create table Manufacturers(Code integer(3) PRIMARY KEY, Name Varchar(50) NOT NULL);
+Query OK, 0 rows affected (0.28 sec)
+
+MariaDB [mytestdb]> create table products(Code integer (3) primary key,Name varchar(50), Price float, manufacturers integer references manufacturers(Code));
+Query OK, 0 rows affected (0.63 sec)
+
+MariaDB [mytestdb]> INSERT INTO Manufacturers(Code,Name) VALUES(1,'Sony');INSERT INTO Manufacturers(Code,Name) VALUES(2,'Creative Labs');INSERT INTO Manufacturers(Code,Name) VALUES(3,'Hewlett-Packard');INSERT INTO Manufacturers(Code,Name) VALUES(4,'Iomega');INSERT INTO Manufacturers(Code,Name) VALUES(5,'Fujitsu');INSERT INTO Manufacturers(Code,Name) VALUES(6,'Winchester');INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(1,'Hard drive',240,5);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(2,'Memory',120,6);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(3,'ZIP drive',150,4);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(4,'Floppy disk',5,6);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(5,'Monitor',240,1);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(6,'DVD drive',180,2);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(7,'CD drive',90,2);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(8,'Printer',270,3);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(9,'Toner cartridge',66,3);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(10,'DVD burner',180,2);
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.08 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
+MariaDB [mytestdb]> select * from products;
+Empty set (0.00 sec)
+
+MariaDB [mytestdb]> select * from Products;
+Empty set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
++------+-----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> desc prodcuts;
+ERROR 1146 (42S02): Table 'mytestdb.prodcuts' doesn't exist
+MariaDB [mytestdb]> desc products;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Code          | int(3)      | NO   | PRI | NULL    |       |
+| Name          | varchar(50) | YES  |     | NULL    |       |
+| Price         | float       | YES  |     | NULL    |       |
+| manufacturers | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+MariaDB [mytestdb]> INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(1,'Hard drive',240,5);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(2,'Memory',120,6);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(3,'ZIP drive',150,4);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(4,'Floppy disk',5,6);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(5,'Monitor',240,1);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(6,'DVD drive',180,2);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(7,'CD drive',90,2);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(8,'Printer',270,3);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(9,'Toner cartridge',66,3);INSERT INTO Products(Code,Name,Price,manufacturers) VALUES(10,'DVD burner',180,2);
+Query OK, 1 row affected (0.06 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.06 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+---------------+
+| Code | Name            | Price | manufacturers |
++------+-----------------+-------+---------------+
+|    1 | Hard drive      |   240 |             5 |
+|    2 | Memory          |   120 |             6 |
+|    3 | ZIP drive       |   150 |             4 |
+|    4 | Floppy disk     |     5 |             6 |
+|    5 | Monitor         |   240 |             1 |
+|    6 | DVD drive       |   180 |             2 |
+|    7 | CD drive        |    90 |             2 |
+|    8 | Printer         |   270 |             3 |
+|    9 | Toner cartridge |    66 |             3 |
+|   10 | DVD burner      |   180 |             2 |
++------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> desc manufacturers;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| Code  | int(3)      | NO   | PRI | NULL    |       |
+| Name  | varchar(50) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> desc products;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Code          | int(3)      | NO   | PRI | NULL    |       |
+| Name          | varchar(50) | YES  |     | NULL    |       |
+| Price         | float       | YES  |     | NULL    |       |
+| manufacturers | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+Query OK, 0 rows affected (0.28 sec)
+
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| manufacturers      |
+| pet                |
+| products           |
+| students           |
+| t                  |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> desc pet
+    -> ;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| owner   | varchar(20) | YES  |     | NULL    |       |
+| species | varchar(20) | YES  |     | NULL    |       |
+| sex     | char(1)     | YES  |     | NULL    |       |
+| birth   | date        | YES  |     | NULL    |       |
+| death   | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> LOAD DATA LOCAL INFILE '\Desktop\pet.txt' INTO TABLE pet;
+ERROR 1148 (42000): The used command is not allowed with this MariaDB version
+MariaDB [mytestdb]> LOAD DATA INFILE '\\storage\storage$\719531\Desktop\pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\storagestorage$719531Desktoppet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriespet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries/pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueries\pet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:\xampp\mysql\data\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\xampp\mysql\data\xamppmysqldataUsers719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> LOAD DATA LOCAL INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
+ERROR 1148 (42000): The used command is not allowed with this MariaDB version
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
+ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
+MariaDB [mytestdb]> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| manufacturers      |
+| pet                |
+| products           |
+| students           |
+| t                  |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> LOAD DATA INFILE 'C:/Users/719531/Downloads/Queries/Queries/pet.txt' INTO TABLE pet;
+Query OK, 8 rows affected, 7 warnings (0.10 sec)
+Records: 8  Deleted: 0  Skipped: 0  Warnings: 7
+
+MariaDB [mytestdb]> select * from pet;
++----------+--------+---------+------+------------+------------+
+| name     | owner  | species | sex  | birth      | death      |
++----------+--------+---------+------+------------+------------+
+| Fluffy   | Harold | cat     | f    | 1993-02-04 | 0000-00-00 |
+| Claws    | Gwen   | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Buffy    | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Fang     | Benny  | dog     | m    | 1990-08-27 | 0000-00-00 |
+| Bowser   | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Chirpy   | Gwen   | bird    | f    | 1998-09-11 | 0000-00-00 |
+| Whistler | Gwen   | bird    |      | 1997-12-09 | 0000-00-00 |
+| Slim     | Benny  | snake   | m    | 1996-04-29 | 0000-00-00 |
++----------+--------+---------+------+------------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age FROM pet;
++----------+------------+------------+------+
+| name     | birth      | CURDATE()  | age  |
++----------+------------+------------+------+
+| Fluffy   | 1993-02-04 | 2017-09-08 |   24 |
+| Claws    | 1994-03-17 | 2017-09-08 |   23 |
+| Buffy    | 1989-05-13 | 2017-09-08 |   28 |
+| Fang     | 1990-08-27 | 2017-09-08 |   27 |
+| Bowser   | 1979-08-31 | 2017-09-08 |   38 |
+| Chirpy   | 1998-09-11 | 2017-09-08 |   18 |
+| Whistler | 1997-12-09 | 2017-09-08 |   19 |
+| Slim     | 1996-04-29 | 2017-09-08 |   21 |
++----------+------------+------------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(YEAR,CURDATE(),birth) AS age FROM pet;
++----------+------------+------------+------+
+| name     | birth      | CURDATE()  | age  |
++----------+------------+------------+------+
+| Fluffy   | 1993-02-04 | 2017-09-08 |  -24 |
+| Claws    | 1994-03-17 | 2017-09-08 |  -23 |
+| Buffy    | 1989-05-13 | 2017-09-08 |  -28 |
+| Fang     | 1990-08-27 | 2017-09-08 |  -27 |
+| Bowser   | 1979-08-31 | 2017-09-08 |  -38 |
+| Chirpy   | 1998-09-11 | 2017-09-08 |  -18 |
+| Whistler | 1997-12-09 | 2017-09-08 |  -19 |
+| Slim     | 1996-04-29 | 2017-09-08 |  -21 |
++----------+------------+------------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(MONTH,CURDATE(),birth) AS age FROM pet;
++----------+------------+------------+------+
+| name     | birth      | CURDATE()  | age  |
++----------+------------+------------+------+
+| Fluffy   | 1993-02-04 | 2017-09-08 | -295 |
+| Claws    | 1994-03-17 | 2017-09-08 | -281 |
+| Buffy    | 1989-05-13 | 2017-09-08 | -339 |
+| Fang     | 1990-08-27 | 2017-09-08 | -324 |
+| Bowser   | 1979-08-31 | 2017-09-08 | -456 |
+| Chirpy   | 1998-09-11 | 2017-09-08 | -227 |
+| Whistler | 1997-12-09 | 2017-09-08 | -236 |
+| Slim     | 1996-04-29 | 2017-09-08 | -256 |
++----------+------------+------------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(MONTH,birth,CURDATE()) AS age FROM pet;
++----------+------------+------------+------+
+| name     | birth      | CURDATE()  | age  |
++----------+------------+------------+------+
+| Fluffy   | 1993-02-04 | 2017-09-08 |  295 |
+| Claws    | 1994-03-17 | 2017-09-08 |  281 |
+| Buffy    | 1989-05-13 | 2017-09-08 |  339 |
+| Fang     | 1990-08-27 | 2017-09-08 |  324 |
+| Bowser   | 1979-08-31 | 2017-09-08 |  456 |
+| Chirpy   | 1998-09-11 | 2017-09-08 |  227 |
+| Whistler | 1997-12-09 | 2017-09-08 |  236 |
+| Slim     | 1996-04-29 | 2017-09-08 |  256 |
++----------+------------+------------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(CENTURY,birth,CURDATE()) AS age FROM pet;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CENTURY,birth,CURDATE()) AS age FROM pet' at line 1
+MariaDB [mytestdb]> select * from pet;
++----------+--------+---------+------+------------+------------+
+| name     | owner  | species | sex  | birth      | death      |
++----------+--------+---------+------+------------+------------+
+| Fluffy   | Harold | cat     | f    | 1993-02-04 | 0000-00-00 |
+| Claws    | Gwen   | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Buffy    | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Fang     | Benny  | dog     | m    | 1990-08-27 | 0000-00-00 |
+| Bowser   | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Chirpy   | Gwen   | bird    | f    | 1998-09-11 | 0000-00-00 |
+| Whistler | Gwen   | bird    |      | 1997-12-09 | 0000-00-00 |
+| Slim     | Benny  | snake   | m    | 1996-04-29 | 0000-00-00 |
++----------+--------+---------+------+------------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),cast(TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS text) FROM pet;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'text) FROM pet' at line 1
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),convert(varchar,TIMESTAMPDIFF(YEAR,birth,CURDATE())) FROM pet;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'varchar,TIMESTAMPDIFF(YEAR,birth,CURDATE())) FROM pet' at line 1
+MariaDB [mytestdb]> set @a = 10;
+Query OK, 0 rows affected (0.03 sec)
+
+MariaDB [mytestdb]> select @a;
++------+
+| @a   |
++------+
+|   10 |
++------+
+1 row in set (0.05 sec)
+
+MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(CENTURY,birth,CURDATE()) AS age, @a + 1 FROM pet;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CENTURY,birth,CURDATE()) AS age, @a + 1 FROM pet' at line 1
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP '^b';
++--------+--------+---------+------+------------+------------+
+| name   | owner  | species | sex  | birth      | death      |
++--------+--------+---------+------+------------+------------+
+| Buffy  | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Bowser | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
++--------+--------+---------+------+------------+------------+
+2 rows in set (0.05 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP BINARY '^b';
+Empty set (0.03 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP 'er*';
++----------+-------+---------+------+------------+------------+
+| name     | owner | species | sex  | birth      | death      |
++----------+-------+---------+------+------------+------------+
+| Bowser   | Diane | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Whistler | Gwen  | bird    |      | 1997-12-09 | 0000-00-00 |
++----------+-------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP 'er$';
++----------+-------+---------+------+------------+------------+
+| name     | owner | species | sex  | birth      | death      |
++----------+-------+---------+------+------------+------------+
+| Bowser   | Diane | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Whistler | Gwen  | bird    |      | 1997-12-09 | 0000-00-00 |
++----------+-------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name RLIKE 'er$';
++----------+-------+---------+------+------------+------------+
+| name     | owner | species | sex  | birth      | death      |
++----------+-------+---------+------+------------+------------+
+| Bowser   | Diane | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Whistler | Gwen  | bird    |      | 1997-12-09 | 0000-00-00 |
++----------+-------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP 'w';
++----------+-------+---------+------+------------+------------+
+| name     | owner | species | sex  | birth      | death      |
++----------+-------+---------+------+------------+------------+
+| Claws    | Gwen  | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Bowser   | Diane | dog     | m    | 1979-08-31 | 1995-07-29 |
+| Whistler | Gwen  | bird    |      | 1997-12-09 | 0000-00-00 |
++----------+-------+---------+------+------------+------------+
+3 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP '^.....$';
++-------+--------+---------+------+------------+------------+
+| name  | owner  | species | sex  | birth      | death      |
++-------+--------+---------+------+------------+------------+
+| Claws | Gwen   | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Buffy | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
++-------+--------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP '^.{5}$';
++-------+--------+---------+------+------------+------------+
+| name  | owner  | species | sex  | birth      | death      |
++-------+--------+---------+------+------------+------------+
+| Claws | Gwen   | cat     | m    | 1994-03-17 | 0000-00-00 |
+| Buffy | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
++-------+--------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT 'HELLO WORLD' REGEXP '^h.*o.*w.*d$';
++-------------------------------------+
+| 'HELLO WORLD' REGEXP '^h.*o.*w.*d$' |
++-------------------------------------+
+|                                   1 |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP '^b';
++--------+--------+---------+------+------------+------------+
+| name   | owner  | species | sex  | birth      | death      |
++--------+--------+---------+------+------------+------------+
+| Buffy  | Harold | dog     | f    | 1989-05-13 | 0000-00-00 |
+| Bowser | Diane  | dog     | m    | 1979-08-31 | 1995-07-29 |
++--------+--------+---------+------+------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from products,manufacturers;
++------+-----------------+-------+---------------+------+-----------------+
+| Code | Name            | Price | manufacturers | Code | Name            |
++------+-----------------+-------+---------------+------+-----------------+
+|    1 | Hard drive      |   240 |             5 |    1 | Sony            |
+|    1 | Hard drive      |   240 |             5 |    2 | Creative Labs   |
+|    1 | Hard drive      |   240 |             5 |    3 | Hewlett-Packard |
+|    1 | Hard drive      |   240 |             5 |    4 | Iomega          |
+|    1 | Hard drive      |   240 |             5 |    5 | Fujitsu         |
+|    1 | Hard drive      |   240 |             5 |    6 | Winchester      |
+|    2 | Memory          |   120 |             6 |    1 | Sony            |
+|    2 | Memory          |   120 |             6 |    2 | Creative Labs   |
+|    2 | Memory          |   120 |             6 |    3 | Hewlett-Packard |
+|    2 | Memory          |   120 |             6 |    4 | Iomega          |
+|    2 | Memory          |   120 |             6 |    5 | Fujitsu         |
+|    2 | Memory          |   120 |             6 |    6 | Winchester      |
+|    3 | ZIP drive       |   150 |             4 |    1 | Sony            |
+|    3 | ZIP drive       |   150 |             4 |    2 | Creative Labs   |
+|    3 | ZIP drive       |   150 |             4 |    3 | Hewlett-Packard |
+|    3 | ZIP drive       |   150 |             4 |    4 | Iomega          |
+|    3 | ZIP drive       |   150 |             4 |    5 | Fujitsu         |
+|    3 | ZIP drive       |   150 |             4 |    6 | Winchester      |
+|    4 | Floppy disk     |     5 |             6 |    1 | Sony            |
+|    4 | Floppy disk     |     5 |             6 |    2 | Creative Labs   |
+|    4 | Floppy disk     |     5 |             6 |    3 | Hewlett-Packard |
+|    4 | Floppy disk     |     5 |             6 |    4 | Iomega          |
+|    4 | Floppy disk     |     5 |             6 |    5 | Fujitsu         |
+|    4 | Floppy disk     |     5 |             6 |    6 | Winchester      |
+|    5 | Monitor         |   240 |             1 |    1 | Sony            |
+|    5 | Monitor         |   240 |             1 |    2 | Creative Labs   |
+|    5 | Monitor         |   240 |             1 |    3 | Hewlett-Packard |
+|    5 | Monitor         |   240 |             1 |    4 | Iomega          |
+|    5 | Monitor         |   240 |             1 |    5 | Fujitsu         |
+|    5 | Monitor         |   240 |             1 |    6 | Winchester      |
+|    6 | DVD drive       |   180 |             2 |    1 | Sony            |
+|    6 | DVD drive       |   180 |             2 |    2 | Creative Labs   |
+|    6 | DVD drive       |   180 |             2 |    3 | Hewlett-Packard |
+|    6 | DVD drive       |   180 |             2 |    4 | Iomega          |
+|    6 | DVD drive       |   180 |             2 |    5 | Fujitsu         |
+|    6 | DVD drive       |   180 |             2 |    6 | Winchester      |
+|    7 | CD drive        |    90 |             2 |    1 | Sony            |
+|    7 | CD drive        |    90 |             2 |    2 | Creative Labs   |
+|    7 | CD drive        |    90 |             2 |    3 | Hewlett-Packard |
+|    7 | CD drive        |    90 |             2 |    4 | Iomega          |
+|    7 | CD drive        |    90 |             2 |    5 | Fujitsu         |
+|    7 | CD drive        |    90 |             2 |    6 | Winchester      |
+|    8 | Printer         |   270 |             3 |    1 | Sony            |
+|    8 | Printer         |   270 |             3 |    2 | Creative Labs   |
+|    8 | Printer         |   270 |             3 |    3 | Hewlett-Packard |
+|    8 | Printer         |   270 |             3 |    4 | Iomega          |
+|    8 | Printer         |   270 |             3 |    5 | Fujitsu         |
+|    8 | Printer         |   270 |             3 |    6 | Winchester      |
+|    9 | Toner cartridge |    66 |             3 |    1 | Sony            |
+|    9 | Toner cartridge |    66 |             3 |    2 | Creative Labs   |
+|    9 | Toner cartridge |    66 |             3 |    3 | Hewlett-Packard |
+|    9 | Toner cartridge |    66 |             3 |    4 | Iomega          |
+|    9 | Toner cartridge |    66 |             3 |    5 | Fujitsu         |
+|    9 | Toner cartridge |    66 |             3 |    6 | Winchester      |
+|   10 | DVD burner      |   180 |             2 |    1 | Sony            |
+|   10 | DVD burner      |   180 |             2 |    2 | Creative Labs   |
+|   10 | DVD burner      |   180 |             2 |    3 | Hewlett-Packard |
+|   10 | DVD burner      |   180 |             2 |    4 | Iomega          |
+|   10 | DVD burner      |   180 |             2 |    5 | Fujitsu         |
+|   10 | DVD burner      |   180 |             2 |    6 | Winchester      |
++------+-----------------+-------+---------------+------+-----------------+
+60 rows in set (0.03 sec)
+
+MariaDB [mytestdb]> desc products;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Code          | int(3)      | NO   | PRI | NULL    |       |
+| Name          | varchar(50) | YES  |     | NULL    |       |
+| Price         | float       | YES  |     | NULL    |       |
+| manufacturers | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> desc manufacturers;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| Code  | int(3)      | NO   | PRI | NULL    |       |
+| Name  | varchar(50) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers,products where manufacturers.code = products.manufacturers;
++------+-----------------+------+-----------------+-------+---------------+
+| Code | Name            | Code | Name            | Price | manufacturers |
++------+-----------------+------+-----------------+-------+---------------+
+|    1 | Sony            |    5 | Monitor         |   240 |             1 |
+|    2 | Creative Labs   |    6 | DVD drive       |   180 |             2 |
+|    2 | Creative Labs   |    7 | CD drive        |    90 |             2 |
+|    2 | Creative Labs   |   10 | DVD burner      |   180 |             2 |
+|    3 | Hewlett-Packard |    8 | Printer         |   270 |             3 |
+|    3 | Hewlett-Packard |    9 | Toner cartridge |    66 |             3 |
+|    4 | Iomega          |    3 | ZIP drive       |   150 |             4 |
+|    5 | Fujitsu         |    1 | Hard drive      |   240 |             5 |
+|    6 | Winchester      |    2 | Memory          |   120 |             6 |
+|    6 | Winchester      |    4 | Floppy disk     |     5 |             6 |
++------+-----------------+------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
++------+-----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+---------------+
+| Code | Name            | Price | manufacturers |
++------+-----------------+-------+---------------+
+|    1 | Hard drive      |   240 |             5 |
+|    2 | Memory          |   120 |             6 |
+|    3 | ZIP drive       |   150 |             4 |
+|    4 | Floppy disk     |     5 |             6 |
+|    5 | Monitor         |   240 |             1 |
+|    6 | DVD drive       |   180 |             2 |
+|    7 | CD drive        |    90 |             2 |
+|    8 | Printer         |   270 |             3 |
+|    9 | Toner cartridge |    66 |             3 |
+|   10 | DVD burner      |   180 |             2 |
++------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select m.code, products.code, code from manufacturers m, products;
+ERROR 1052 (23000): Column 'code' in field list is ambiguous
+MariaDB [mytestdb]> select m.code, products.code from manufacturers m, products;
++------+------+
+| code | code |
++------+------+
+|    1 |    1 |
+|    2 |    1 |
+|    3 |    1 |
+|    4 |    1 |
+|    5 |    1 |
+|    6 |    1 |
+|    1 |    2 |
+|    2 |    2 |
+|    3 |    2 |
+|    4 |    2 |
+|    5 |    2 |
+|    6 |    2 |
+|    1 |    3 |
+|    2 |    3 |
+|    3 |    3 |
+|    4 |    3 |
+|    5 |    3 |
+|    6 |    3 |
+|    1 |    4 |
+|    2 |    4 |
+|    3 |    4 |
+|    4 |    4 |
+|    5 |    4 |
+|    6 |    4 |
+|    1 |    5 |
+|    2 |    5 |
+|    3 |    5 |
+|    4 |    5 |
+|    5 |    5 |
+|    6 |    5 |
+|    1 |    6 |
+|    2 |    6 |
+|    3 |    6 |
+|    4 |    6 |
+|    5 |    6 |
+|    6 |    6 |
+|    1 |    7 |
+|    2 |    7 |
+|    3 |    7 |
+|    4 |    7 |
+|    5 |    7 |
+|    6 |    7 |
+|    1 |    8 |
+|    2 |    8 |
+|    3 |    8 |
+|    4 |    8 |
+|    5 |    8 |
+|    6 |    8 |
+|    1 |    9 |
+|    2 |    9 |
+|    3 |    9 |
+|    4 |    9 |
+|    5 |    9 |
+|    6 |    9 |
+|    1 |   10 |
+|    2 |   10 |
+|    3 |   10 |
+|    4 |   10 |
+|    5 |   10 |
+|    6 |   10 |
++------+------+
+60 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
++------+-----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select @ from porducts;
+ERROR 1146 (42S02): Table 'mytestdb.porducts' doesn't exist
+MariaDB [mytestdb]> select @ from porducts;
+ERROR 1146 (42S02): Table 'mytestdb.porducts' doesn't exist
+MariaDB [mytestdb]> select * from porducts;
+ERROR 1146 (42S02): Table 'mytestdb.porducts' doesn't exist
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+---------------+
+| Code | Name            | Price | manufacturers |
++------+-----------------+-------+---------------+
+|    1 | Hard drive      |   240 |             5 |
+|    2 | Memory          |   120 |             6 |
+|    3 | ZIP drive       |   150 |             4 |
+|    4 | Floppy disk     |     5 |             6 |
+|    5 | Monitor         |   240 |             1 |
+|    6 | DVD drive       |   180 |             2 |
+|    7 | CD drive        |    90 |             2 |
+|    8 | Printer         |   270 |             3 |
+|    9 | Toner cartridge |    66 |             3 |
+|   10 | DVD burner      |   180 |             2 |
++------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select p.code, p.name, m.code, m.name where manufacturers m, products p where m.code=p.code;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where manufacturers m, products p where m.code=p.code' at line 1
+MariaDB [mytestdb]> select p.code, p.name, m.code, m.name from manufacturers m, products p where m.code=p.code;
++------+-------------+------+-----------------+
+| code | name        | code | name            |
++------+-------------+------+-----------------+
+|    1 | Hard drive  |    1 | Sony            |
+|    2 | Memory      |    2 | Creative Labs   |
+|    3 | ZIP drive   |    3 | Hewlett-Packard |
+|    4 | Floppy disk |    4 | Iomega          |
+|    5 | Monitor     |    5 | Fujitsu         |
+|    6 | DVD drive   |    6 | Winchester      |
++------+-------------+------+-----------------+
+6 rows in set (0.04 sec)
+
+MariaDB [mytestdb]> select * from manufacturers m, product p where m.code=p.manufacturers;
+ERROR 1146 (42S02): Table 'mytestdb.product' doesn't exist
+MariaDB [mytestdb]> select * from manufacturers m, products p where m.code=p.manufacturers;
++------+-----------------+------+-----------------+-------+---------------+
+| Code | Name            | Code | Name            | Price | manufacturers |
++------+-----------------+------+-----------------+-------+---------------+
+|    1 | Sony            |    5 | Monitor         |   240 |             1 |
+|    2 | Creative Labs   |    6 | DVD drive       |   180 |             2 |
+|    2 | Creative Labs   |    7 | CD drive        |    90 |             2 |
+|    2 | Creative Labs   |   10 | DVD burner      |   180 |             2 |
+|    3 | Hewlett-Packard |    8 | Printer         |   270 |             3 |
+|    3 | Hewlett-Packard |    9 | Toner cartridge |    66 |             3 |
+|    4 | Iomega          |    3 | ZIP drive       |   150 |             4 |
+|    5 | Fujitsu         |    1 | Hard drive      |   240 |             5 |
+|    6 | Winchester      |    2 | Memory          |   120 |             6 |
+|    6 | Winchester      |    4 | Floppy disk     |     5 |             6 |
++------+-----------------+------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
++------+-----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> insert into manufacturers values(7, 'Lambton');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
+|    7 | Lambton         |
++------+-----------------+
+7 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers m, products p where m.code=p.manufacturers;
++------+-----------------+------+-----------------+-------+---------------+
+| Code | Name            | Code | Name            | Price | manufacturers |
++------+-----------------+------+-----------------+-------+---------------+
+|    5 | Fujitsu         |    1 | Hard drive      |   240 |             5 |
+|    6 | Winchester      |    2 | Memory          |   120 |             6 |
+|    4 | Iomega          |    3 | ZIP drive       |   150 |             4 |
+|    6 | Winchester      |    4 | Floppy disk     |     5 |             6 |
+|    1 | Sony            |    5 | Monitor         |   240 |             1 |
+|    2 | Creative Labs   |    6 | DVD drive       |   180 |             2 |
+|    2 | Creative Labs   |    7 | CD drive        |    90 |             2 |
+|    3 | Hewlett-Packard |    8 | Printer         |   270 |             3 |
+|    3 | Hewlett-Packard |    9 | Toner cartridge |    66 |             3 |
+|    2 | Creative Labs   |   10 | DVD burner      |   180 |             2 |
++------+-----------------+------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers m JOIN products p ON m.code=p.manufacturer;
+ERROR 1054 (42S22): Unknown column 'p.manufacturer' in 'on clause'
+MariaDB [mytestdb]> select * from manufacturers m JOIN products p ON m.code=p.manufacturers;
++------+-----------------+------+-----------------+-------+---------------+
+| Code | Name            | Code | Name            | Price | manufacturers |
++------+-----------------+------+-----------------+-------+---------------+
+|    5 | Fujitsu         |    1 | Hard drive      |   240 |             5 |
+|    6 | Winchester      |    2 | Memory          |   120 |             6 |
+|    4 | Iomega          |    3 | ZIP drive       |   150 |             4 |
+|    6 | Winchester      |    4 | Floppy disk     |     5 |             6 |
+|    1 | Sony            |    5 | Monitor         |   240 |             1 |
+|    2 | Creative Labs   |    6 | DVD drive       |   180 |             2 |
+|    2 | Creative Labs   |    7 | CD drive        |    90 |             2 |
+|    3 | Hewlett-Packard |    8 | Printer         |   270 |             3 |
+|    3 | Hewlett-Packard |    9 | Toner cartridge |    66 |             3 |
+|    2 | Creative Labs   |   10 | DVD burner      |   180 |             2 |
++------+-----------------+------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select name, price, m.name from products p, manufacturers m where m.code=p.manufacturers;
+ERROR 1052 (23000): Column 'name' in field list is ambiguous
+MariaDB [mytestdb]> select p.name, price, m.name from products p, manufacturers m where m.code=p.manufacturers;
++-----------------+-------+-----------------+
+| name            | price | name            |
++-----------------+-------+-----------------+
+| Hard drive      |   240 | Fujitsu         |
+| Memory          |   120 | Winchester      |
+| ZIP drive       |   150 | Iomega          |
+| Floppy disk     |     5 | Winchester      |
+| Monitor         |   240 | Sony            |
+| DVD drive       |   180 | Creative Labs   |
+| CD drive        |    90 | Creative Labs   |
+| Printer         |   270 | Hewlett-Packard |
+| Toner cartridge |    66 | Hewlett-Packard |
+| DVD burner      |   180 | Creative Labs   |
++-----------------+-------+-----------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select p.name,price,m.name from manufacturers m JOIN products p ON m.code=p.manufacturers;
++-----------------+-------+-----------------+
+| name            | price | name            |
++-----------------+-------+-----------------+
+| Hard drive      |   240 | Fujitsu         |
+| Memory          |   120 | Winchester      |
+| ZIP drive       |   150 | Iomega          |
+| Floppy disk     |     5 | Winchester      |
+| Monitor         |   240 | Sony            |
+| DVD drive       |   180 | Creative Labs   |
+| CD drive        |    90 | Creative Labs   |
+| Printer         |   270 | Hewlett-Packard |
+| Toner cartridge |    66 | Hewlett-Packard |
+| DVD burner      |   180 | Creative Labs   |
++-----------------+-------+-----------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
+|    7 | Lambton         |
++------+-----------------+
+7 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+---------------+
+| Code | Name            | Price | manufacturers |
++------+-----------------+-------+---------------+
+|    1 | Hard drive      |   240 |             5 |
+|    2 | Memory          |   120 |             6 |
+|    3 | ZIP drive       |   150 |             4 |
+|    4 | Floppy disk     |     5 |             6 |
+|    5 | Monitor         |   240 |             1 |
+|    6 | DVD drive       |   180 |             2 |
+|    7 | CD drive        |    90 |             2 |
+|    8 | Printer         |   270 |             3 |
+|    9 | Toner cartridge |    66 |             3 |
+|   10 | DVD burner      |   180 |             2 |
++------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM manufacturers m LEFT OUTER JOIN products p ON m.code = p.manufacturer;
+ERROR 1054 (42S22): Unknown column 'p.manufacturer' in 'on clause'
+MariaDB [mytestdb]> SELECT * FROM manufacturers m LEFT OUTER JOIN products p ON m.code = p.manufacturers;
++------+-----------------+------+-----------------+-------+---------------+
+| Code | Name            | Code | Name            | Price | manufacturers |
++------+-----------------+------+-----------------+-------+---------------+
+|    5 | Fujitsu         |    1 | Hard drive      |   240 |             5 |
+|    6 | Winchester      |    2 | Memory          |   120 |             6 |
+|    4 | Iomega          |    3 | ZIP drive       |   150 |             4 |
+|    6 | Winchester      |    4 | Floppy disk     |     5 |             6 |
+|    1 | Sony            |    5 | Monitor         |   240 |             1 |
+|    2 | Creative Labs   |    6 | DVD drive       |   180 |             2 |
+|    2 | Creative Labs   |    7 | CD drive        |    90 |             2 |
+|    3 | Hewlett-Packard |    8 | Printer         |   270 |             3 |
+|    3 | Hewlett-Packard |    9 | Toner cartridge |    66 |             3 |
+|    2 | Creative Labs   |   10 | DVD burner      |   180 |             2 |
+|    7 | Lambton         | NULL | NULL            |  NULL |          NULL |
++------+-----------------+------+-----------------+-------+---------------+
+11 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT CompanyName, Count(ProductName)
+    ->   FROM Suppliers LEFT JOIN Products
+    ->     ON Suppliers.SupplierID = Products.SupplierID
+    ->  GROUP BY
+    ->
+    -> exit
+    -> exit
+    -> exit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'exit
+exit
+exit' at line 6
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+---------------+
+| Code | Name            | Price | manufacturers |
++------+-----------------+-------+---------------+
+|    1 | Hard drive      |   240 |             5 |
+|    2 | Memory          |   120 |             6 |
+|    3 | ZIP drive       |   150 |             4 |
+|    4 | Floppy disk     |     5 |             6 |
+|    5 | Monitor         |   240 |             1 |
+|    6 | DVD drive       |   180 |             2 |
+|    7 | CD drive        |    90 |             2 |
+|    8 | Printer         |   270 |             3 |
+|    9 | Toner cartridge |    66 |             3 |
+|   10 | DVD burner      |   180 |             2 |
++------+-----------------+-------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> drop table products;
+Query OK, 0 rows affected (0.17 sec)
+
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| manufacturers      |
+| pet                |
+| students           |
+| t                  |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> drop table manufacturers;
+Query OK, 0 rows affected (0.19 sec)
+
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| pet                |
+| students           |
+| t                  |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from students;
++------------+-----------+--------+------------+------+
+| STUDENT_ID | Snm       | Gender | CITY       | Age  |
++------------+-----------+--------+------------+------+
+|          1 | SHUBHAM   | MALE   | Toronto    |   25 |
+|          2 | JASKEERAT | MALE   | Toronto    |   24 |
+|          3 | Suresh    | FEMALE | Alberta    |   26 |
+|          4 | Geeta     | Female | Missisauga |   30 |
+|          5 | Suresh    | MALE   | Toronto    |   23 |
++------------+-----------+--------+------------+------+
+5 rows in set (0.03 sec)
+
+MariaDB [mytestdb]> Create table Manufacturers(Code integer(3) PRIMARY KEY, Name Varchar(50) NOT NULL);
+Query OK, 0 rows affected (0.23 sec)
+
+MariaDB [mytestdb]> CREATE TABLE Products ( Code INTEGER, Name VARCHAR(255) NOT NULL , Price DECIMAL NOT NULL , Manufacturer INTEGER, PRIMARY KEY (Code), FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code) ON DELETE SET NULL);
+Query OK, 0 rows affected (0.27 sec)
+
+MariaDB [mytestdb]> INSERT INTO Manufacturers(Code,Name) VALUES(1,'Sony');INSERT INTO Manufacturers(Code,Name) VALUES(2,'Creative Labs');INSERT INTO Manufacturers(Code,Name) VALUES(3,'Hewlett-Packard');INSERT INTO Manufacturers(Code,Name) VALUES(4,'Iomega');INSERT INTO Manufacturers(Code,Name) VALUES(5,'Fujitsu');INSERT INTO Manufacturers(Code,Name) VALUES(6,'Winchester');
+Query OK, 1 row affected (0.08 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [mytestdb]> show tables;
++--------------------+
+| Tables_in_mytestdb |
++--------------------+
+| manufacturers      |
+| pet                |
+| products           |
+| students           |
+| t                  |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(1,'Hard drive',240,5);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(2,'Memory',120,6);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(3,'ZIP drive',150,4);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(4,'Floppy disk',5,6);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(5,'Monitor',240,1);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(6,'DVD drive',180,2);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(7,'CD drive',90,2);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(8,'Printer',270,3);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(9,'Toner cartridge',66,3);INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(10,'DVD burner',180,2);
+Query OK, 1 row affected (0.09 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.08 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+--------------+
+| Code | Name            | Price | Manufacturer |
++------+-----------------+-------+--------------+
+|    1 | Hard drive      |   240 |            5 |
+|    2 | Memory          |   120 |            6 |
+|    3 | ZIP drive       |   150 |            4 |
+|    4 | Floppy disk     |     5 |            6 |
+|    5 | Monitor         |   240 |            1 |
+|    6 | DVD drive       |   180 |            2 |
+|    7 | CD drive        |    90 |            2 |
+|    8 | Printer         |   270 |            3 |
+|    9 | Toner cartridge |    66 |            3 |
+|   10 | DVD burner      |   180 |            2 |
++------+-----------------+-------+--------------+
+10 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
++------+-----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> desc products;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| Code         | int(11)       | NO   | PRI | NULL    |       |
+| Name         | varchar(255)  | NO   |     | NULL    |       |
+| Price        | decimal(10,0) | NO   |     | NULL    |       |
+| Manufacturer | int(11)       | YES  | MUL | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> insert into products values(11,'USB Drive',100,NULL);
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
++------+-----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+--------------+
+| Code | Name            | Price | Manufacturer |
++------+-----------------+-------+--------------+
+|    1 | Hard drive      |   240 |            5 |
+|    2 | Memory          |   120 |            6 |
+|    3 | ZIP drive       |   150 |            4 |
+|    4 | Floppy disk     |     5 |            6 |
+|    5 | Monitor         |   240 |            1 |
+|    6 | DVD drive       |   180 |            2 |
+|    7 | CD drive        |    90 |            2 |
+|    8 | Printer         |   270 |            3 |
+|    9 | Toner cartridge |    66 |            3 |
+|   10 | DVD burner      |   180 |            2 |
+|   11 | USB Drive       |   100 |         NULL |
++------+-----------------+-------+--------------+
+11 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> insert into products values(12,'Pendrive 1',100,7);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`mytestdb`.`products`, CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Manufacturer`) REFERENCES `manufacturers` (`Code`) ON DELETE SET NULL)
+MariaDB [mytestdb]> insert into manufacturers values(7, 'Lambton');
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [mytestdb]> insert into products values(12,'Pendrive 1',100,7);
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+--------------+
+| Code | Name            | Price | Manufacturer |
++------+-----------------+-------+--------------+
+|    1 | Hard drive      |   240 |            5 |
+|    2 | Memory          |   120 |            6 |
+|    3 | ZIP drive       |   150 |            4 |
+|    4 | Floppy disk     |     5 |            6 |
+|    5 | Monitor         |   240 |            1 |
+|    6 | DVD drive       |   180 |            2 |
+|    7 | CD drive        |    90 |            2 |
+|    8 | Printer         |   270 |            3 |
+|    9 | Toner cartridge |    66 |            3 |
+|   10 | DVD burner      |   180 |            2 |
+|   11 | USB Drive       |   100 |         NULL |
+|   12 | Pendrive 1      |   100 |            7 |
++------+-----------------+-------+--------------+
+12 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> delete from manufacturers where code = 7;
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [mytestdb]> select * from products;
++------+-----------------+-------+--------------+
+| Code | Name            | Price | Manufacturer |
++------+-----------------+-------+--------------+
+|    1 | Hard drive      |   240 |            5 |
+|    2 | Memory          |   120 |            6 |
+|    3 | ZIP drive       |   150 |            4 |
+|    4 | Floppy disk     |     5 |            6 |
+|    5 | Monitor         |   240 |            1 |
+|    6 | DVD drive       |   180 |            2 |
+|    7 | CD drive        |    90 |            2 |
+|    8 | Printer         |   270 |            3 |
+|    9 | Toner cartridge |    66 |            3 |
+|   10 | DVD burner      |   180 |            2 |
+|   11 | USB Drive       |   100 |         NULL |
+|   12 | Pendrive 1      |   100 |         NULL |
++------+-----------------+-------+--------------+
+12 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> insert into manufacturers values(8, 'Pen drive');
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [mytestdb]> select * from manufacturers;
++------+-----------------+
+| Code | Name            |
++------+-----------------+
+|    1 | Sony            |
+|    2 | Creative Labs   |
+|    3 | Hewlett-Packard |
+|    4 | Iomega          |
+|    5 | Fujitsu         |
+|    6 | Winchester      |
+|    8 | Pen drive       |
++------+-----------------+
+7 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM manufacturers m RIGHT OUTER JOIN products p ON m.code = p.manufacturer;
++------+-----------------+------+-----------------+-------+--------------+
+| Code | Name            | Code | Name            | Price | Manufacturer |
++------+-----------------+------+-----------------+-------+--------------+
+|    5 | Fujitsu         |    1 | Hard drive      |   240 |            5 |
+|    6 | Winchester      |    2 | Memory          |   120 |            6 |
+|    4 | Iomega          |    3 | ZIP drive       |   150 |            4 |
+|    6 | Winchester      |    4 | Floppy disk     |     5 |            6 |
+|    1 | Sony            |    5 | Monitor         |   240 |            1 |
+|    2 | Creative Labs   |    6 | DVD drive       |   180 |            2 |
+|    2 | Creative Labs   |    7 | CD drive        |    90 |            2 |
+|    3 | Hewlett-Packard |    8 | Printer         |   270 |            3 |
+|    3 | Hewlett-Packard |    9 | Toner cartridge |    66 |            3 |
+|    2 | Creative Labs   |   10 | DVD burner      |   180 |            2 |
+| NULL | NULL            |   11 | USB Drive       |   100 |         NULL |
+| NULL | NULL            |   12 | Pendrive 1      |   100 |         NULL |
++------+-----------------+------+-----------------+-------+--------------+
+12 rows in set (0.00 sec)
+
+MariaDB [mytestdb]> SELECT * FROM PRODUCTS;
++------+-----------------+-------+--------------+
+| Code | Name            | Price | Manufacturer |
++------+-----------------+-------+--------------+
+|    1 | Hard drive      |   240 |            5 |
+|    2 | Memory          |   120 |            6 |
+|    3 | ZIP drive       |   150 |            4 |
+|    4 | Floppy disk     |     5 |            6 |
+|    5 | Monitor         |   240 |            1 |
+|    6 | DVD drive       |   180 |            2 |
+|    7 | CD drive        |    90 |            2 |
+|    8 | Printer         |   270 |            3 |
+|    9 | Toner cartridge |    66 |            3 |
+|   10 | DVD burner      |   180 |            2 |
+|   11 | USB Drive       |   100 |         NULL |
+|   12 | Pendrive 1      |   100 |         NULL |
++------+-----------------+-------+--------------+
+12 rows in set (0.00 sec)
+
+MariaDB [mytestdb]>
