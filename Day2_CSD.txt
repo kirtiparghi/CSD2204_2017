@@ -12,36 +12,6 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]> create database myTestDB;
 Query OK, 1 row affected (0.00 sec)
 
-MariaDB [(none)]> show database;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
-MariaDB [(none)]> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| mytestdb           |
-| performance_schema |
-| phpmyadmin         |
-| test               |
-+--------------------+
-6 rows in set (0.00 sec)
-
-MariaDB [(none)]> clear
-MariaDB [(none)]> clr
-    -> exitr
-    -> exit
-    ->
-    ->
-    -> exit
-    -> exit;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'clr
-exitr
-exit
-
-
-exit
-exit' at line 1
 MariaDB [(none)]> show databases;
 +--------------------+
 | Database           |
@@ -204,14 +174,6 @@ MariaDB [mytestdb]> select * from student limit 3;
 MariaDB [mytestdb]> select * from student limit 0;
 Empty set (0.00 sec)
 
-MariaDB [mytestdb]> select from student where rownum < 2;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from student where rownum < 2' at line 1
-MariaDB [mytestdb]> select * from student where rownum < 2;
-ERROR 1054 (42S22): Unknown column 'rownum' in 'where clause'
-MariaDB [mytestdb]> select * from student where ROWNUM < 2;
-ERROR 1054 (42S22): Unknown column 'ROWNUM' in 'where clause'
-MariaDB [mytestdb]> SELECT SNM FROM STUDENT WHERE ROWNUM <= 2;
-ERROR 1054 (42S22): Unknown column 'ROWNUM' in 'where clause'
 MariaDB [mytestdb]> select * from student where sid = 4 or sid = 3;
 +------+------+--------+------+
 | sid  | snm  | gender | age  |
@@ -221,10 +183,6 @@ MariaDB [mytestdb]> select * from student where sid = 4 or sid = 3;
 +------+------+--------+------+
 2 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> select *
-    -> from   my_table
-    -> select * from student where ROWNUM < 2;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select * from student where ROWNUM < 2' at line 3
 MariaDB [mytestdb]> select * from student;
 +------+-------+--------+------+
 | sid  | snm   | gender | age  |
