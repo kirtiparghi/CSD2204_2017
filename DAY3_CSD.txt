@@ -11,10 +11,6 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> use testMyDB
-ERROR 1049 (42000): Unknown database 'testmydb'
-MariaDB [(none)]> use testMyDB;
-ERROR 1049 (42000): Unknown database 'testmydb'
 MariaDB [(none)]> use mytestDB;
 Database changed
 MariaDB [mytestDB]> show databases;
@@ -135,8 +131,6 @@ MariaDB [mytestDB]> select * from student;
 +------+----------+--------+-------------+------+------+
 5 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> update student set city = 'Toronto', marks = 200 where sid = 1;
-ERROR 1054 (42S22): Unknown column 'marks' in 'field list'
 MariaDB [mytestDB]> update student set city = 'Toronto', mark = 200 where sid = 1;
 Query OK, 1 row affected (0.04 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -153,8 +147,6 @@ MariaDB [mytestDB]> select * from student;
 +------+----------+--------+-------------+------+------+
 5 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> update student set  marks = 50 where sid = 2;
-ERROR 1054 (42S22): Unknown column 'marks' in 'field list'
 MariaDB [mytestDB]> update student set  mark = 50 where sid = 2;
 Query OK, 1 row affected (0.04 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -183,8 +175,6 @@ MariaDB [mytestDB]> select * from student;
 +------+----------+--------+-------------+------+------+
 5 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> update student set city = 'Toronto', marks = 75 where sid = 1;
-ERROR 1054 (42S22): Unknown column 'marks' in 'field list'
 MariaDB [mytestDB]> update student set city = 'Toronto', mark = 75 where sid = 1;
 Query OK, 1 row affected (0.04 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -209,8 +199,6 @@ MariaDB [mytestDB]> select version();
 +-----------------+
 1 row in set (0.02 sec)
 
-MariaDB [mytestDB]> select user;
-ERROR 1054 (42S22): Unknown column 'user' in 'field list'
 MariaDB [mytestDB]> select user();
 +----------------+
 | user()         |
@@ -235,8 +223,6 @@ MariaDB [mytestDB]> select curtime();
 +-----------+
 1 row in set (0.00 sec)
 
-MariaDB [mytestDB]> select systime();
-ERROR 1305 (42000): FUNCTION mytestdb.systime does not exist
 MariaDB [mytestDB]> select curtime();
 +-----------+
 | curtime() |
@@ -269,8 +255,6 @@ MariaDB [mytestDB]> select current_date();
 +----------------+
 1 row in set (0.00 sec)
 
-MariaDB [mytestDB]> select cur_date();
-ERROR 1305 (42000): FUNCTION mytestdb.cur_date does not exist
 MariaDB [mytestDB]> select curdate();
 +------------+
 | curdate()  |
@@ -279,10 +263,6 @@ MariaDB [mytestDB]> select curdate();
 +------------+
 1 row in set (0.00 sec)
 
-MariaDB [mytestDB]> select systime();
-ERROR 1305 (42000): FUNCTION mytestdb.systime does not exist
-MariaDB [mytestDB]> select system_time();
-ERROR 1305 (42000): FUNCTION mytestdb.system_time does not exist
 MariaDB [mytestDB]> select current_timestamp();
 +---------------------+
 | current_timestamp() |
@@ -291,10 +271,6 @@ MariaDB [mytestDB]> select current_timestamp();
 +---------------------+
 1 row in set (0.00 sec)
 
-MariaDB [mytestDB]> select current_datestamp();
-ERROR 1305 (42000): FUNCTION mytestdb.current_datestamp does not exist
-MariaDB [mytestDB]> select avg(marks) from student ;
-ERROR 1054 (42S22): Unknown column 'marks' in 'field list'
 MariaDB [mytestDB]> select avg(mark) from student ;
 +-----------+
 | avg(mark) |
@@ -395,8 +371,6 @@ MariaDB [mytestDB]> select concat(snm, 'living in',city) from student;
 +-------------------------------+
 5 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> select concat(snm, living in,city) from student;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'city) from student' at line 1
 MariaDB [mytestDB]> select concat(snm, 'living in',city) from student;
 +-------------------------------+
 | concat(snm, 'living in',city) |
@@ -824,8 +798,6 @@ MariaDB [mytestDB]> select max(price) from products;
 +------------+
 1 row in set (0.00 sec)
 
-MariaDB [mytestDB]> select price from products where manufacturer = 2;
-ERROR 1054 (42S22): Unknown column 'manufacturer' in 'where clause'
 MariaDB [mytestDB]> select price from products where manufacturers = 2;
 +-------+
 | price |
@@ -836,8 +808,6 @@ MariaDB [mytestDB]> select price from products where manufacturers = 2;
 +-------+
 3 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> select count(price) where price >= 150;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where price >= 150' at line 1
 MariaDB [mytestDB]> select count(price) from products where price >= 150;
 +--------------+
 | count(price) |
@@ -1079,8 +1049,6 @@ MariaDB [mytestDB]> select * from manufacturers;
 +------+-----------------+
 5 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> INSERT INTO manufacturers  values(7, ias);
-ERROR 1054 (42S22): Unknown column 'ias' in 'field list'
 MariaDB [mytestDB]> INSERT INTO manufacturers  values(1,'ias');
 Query OK, 1 row affected (0.06 sec)
 
@@ -1154,8 +1122,6 @@ MariaDB [mytestDB]> select * from products;
 +------+-----------------+-------+---------------+
 13 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> delete from manufacturer where code = 7;
-ERROR 1146 (42S02): Table 'mytestdb.manufacturer' doesn't exist
 MariaDB [mytestDB]> delete from manufacturers where code = 7;
 Query OK, 1 row affected (0.08 sec)
 
@@ -1172,8 +1138,6 @@ MariaDB [mytestDB]> select * from manufacturers;
 +------+-----------------+
 6 rows in set (0.00 sec)
 
-MariaDB [mytestDB]> delete from manufacturer where code = 7;
-ERROR 1146 (42S02): Table 'mytestdb.manufacturer' doesn't exist
 MariaDB [mytestDB]> select * from products;
 +------+-----------------+-------+---------------+
 | Code | Name            | Price | manufacturers |
