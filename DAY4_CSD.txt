@@ -43,16 +43,12 @@ Query OK, 0 rows affected (0.28 sec)
 MariaDB [mytestdb]> INSERT INTO manufacturers (Code, Name) values (001,'Laptop') ;
 Query OK, 1 row affected (0.12 sec)
 
-MariaDB [mytestdb]> insert into products (code, name, price, manufacturers) values (001, 'Laptop', 45000, 'Dell');
-ERROR 1146 (42S02): Table 'mytestdb.products' doesn't exist
 MariaDB [mytestdb]> create table products(Code integer (3) primary key,Name varchar(50), Price float, manufacturers integer references manufacturers(Code));
 Query OK, 0 rows affected (0.27 sec)
 
 MariaDB [mytestdb]> insert into products (code, name, price, manufacturers) values (001, 'Laptop', 45000, 'Dell');
 Query OK, 1 row affected, 1 warning (0.11 sec)
 
-MariaDB [mytestdb]> select * from product;
-ERROR 1146 (42S02): Table 'mytestdb.product' doesn't exist
 MariaDB [mytestdb]> select * from products;
 +------+--------+-------+---------------+
 | Code | Name   | Price | manufacturers |
@@ -61,8 +57,6 @@ MariaDB [mytestdb]> select * from products;
 +------+--------+-------+---------------+
 1 row in set (0.02 sec)
 
-MariaDB [mytestdb]> select * from manufaturers;
-ERROR 1146 (42S02): Table 'mytestdb.manufaturers' doesn't exist
 MariaDB [mytestdb]> show tables;
 +--------------------+
 | Tables_in_mytestdb |
@@ -125,22 +119,6 @@ Query OK, 1 row affected (0.03 sec)
 
 Query OK, 1 row affected (0.03 sec)
 
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-ERROR 1054 (42S22): Unknown column 'Manufacturer' in 'field list'
-MariaDB [mytestdb]> select * from products;
-Empty set (0.00 sec)
-
-MariaDB [mytestdb]> select * from Products;
-Empty set (0.00 sec)
-
 MariaDB [mytestdb]> select * from manufacturers;
 +------+-----------------+
 | Code | Name            |
@@ -154,8 +132,6 @@ MariaDB [mytestdb]> select * from manufacturers;
 +------+-----------------+
 6 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> desc prodcuts;
-ERROR 1146 (42S02): Table 'mytestdb.prodcuts' doesn't exist
 MariaDB [mytestdb]> desc products;
 +---------------+-------------+------+-----+---------+-------+
 | Field         | Type        | Null | Key | Default | Extra |
@@ -254,26 +230,6 @@ MariaDB [mytestdb]> desc pet
 +---------+-------------+------+-----+---------+-------+
 6 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> LOAD DATA LOCAL INFILE '\Desktop\pet.txt' INTO TABLE pet;
-ERROR 1148 (42000): The used command is not allowed with this MariaDB version
-MariaDB [mytestdb]> LOAD DATA INFILE '\\storage\storage$\719531\Desktop\pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\storagestorage$719531Desktoppet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriespet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries/pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueries\pet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> LOAD DATA INFILE 'C:\xampp\mysql\data\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\xampp\mysql\data\xamppmysqldataUsers719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> LOAD DATA LOCAL INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
-ERROR 1148 (42000): The used command is not allowed with this MariaDB version
-MariaDB [mytestdb]> LOAD DATA INFILE 'C:\Users\719531\Downloads\Queries\Queries\pet.txt' INTO TABLE pet;
-ERROR 29 (HY000): File 'C:\xampp\mysql\data\Users719531DownloadsQueriesQueriespet.txt' not found (Errcode: 2 "No such file or directory")
-MariaDB [mytestdb]> show database;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
 MariaDB [mytestdb]> show tables;
 +--------------------+
 | Tables_in_mytestdb |
@@ -365,8 +321,6 @@ MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(MONTH,birth,CURD
 +----------+------------+------------+------+
 8 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(CENTURY,birth,CURDATE()) AS age FROM pet;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CENTURY,birth,CURDATE()) AS age FROM pet' at line 1
 MariaDB [mytestdb]> select * from pet;
 +----------+--------+---------+------+------------+------------+
 | name     | owner  | species | sex  | birth      | death      |
@@ -382,10 +336,6 @@ MariaDB [mytestdb]> select * from pet;
 +----------+--------+---------+------+------------+------------+
 8 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> SELECT name, birth, CURDATE(),cast(TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS text) FROM pet;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'text) FROM pet' at line 1
-MariaDB [mytestdb]> SELECT name, birth, CURDATE(),convert(varchar,TIMESTAMPDIFF(YEAR,birth,CURDATE())) FROM pet;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'varchar,TIMESTAMPDIFF(YEAR,birth,CURDATE())) FROM pet' at line 1
 MariaDB [mytestdb]> set @a = 10;
 Query OK, 0 rows affected (0.03 sec)
 
@@ -397,8 +347,6 @@ MariaDB [mytestdb]> select @a;
 +------+
 1 row in set (0.05 sec)
 
-MariaDB [mytestdb]> SELECT name, birth, CURDATE(),TIMESTAMPDIFF(CENTURY,birth,CURDATE()) AS age, @a + 1 FROM pet;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CENTURY,birth,CURDATE()) AS age, @a + 1 FROM pet' at line 1
 MariaDB [mytestdb]> SELECT * FROM pet WHERE name REGEXP '^b';
 +--------+--------+---------+------+------------+------------+
 | name   | owner  | species | sex  | birth      | death      |
@@ -617,8 +565,6 @@ MariaDB [mytestdb]> select * from products;
 +------+-----------------+-------+---------------+
 10 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> select m.code, products.code, code from manufacturers m, products;
-ERROR 1052 (23000): Column 'code' in field list is ambiguous
 MariaDB [mytestdb]> select m.code, products.code from manufacturers m, products;
 +------+------+
 | code | code |
@@ -699,12 +645,6 @@ MariaDB [mytestdb]> select * from manufacturers;
 +------+-----------------+
 6 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> select @ from porducts;
-ERROR 1146 (42S02): Table 'mytestdb.porducts' doesn't exist
-MariaDB [mytestdb]> select @ from porducts;
-ERROR 1146 (42S02): Table 'mytestdb.porducts' doesn't exist
-MariaDB [mytestdb]> select * from porducts;
-ERROR 1146 (42S02): Table 'mytestdb.porducts' doesn't exist
 MariaDB [mytestdb]> select * from products;
 +------+-----------------+-------+---------------+
 | Code | Name            | Price | manufacturers |
@@ -722,8 +662,6 @@ MariaDB [mytestdb]> select * from products;
 +------+-----------------+-------+---------------+
 10 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> select p.code, p.name, m.code, m.name where manufacturers m, products p where m.code=p.code;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where manufacturers m, products p where m.code=p.code' at line 1
 MariaDB [mytestdb]> select p.code, p.name, m.code, m.name from manufacturers m, products p where m.code=p.code;
 +------+-------------+------+-----------------+
 | code | name        | code | name            |
@@ -737,8 +675,6 @@ MariaDB [mytestdb]> select p.code, p.name, m.code, m.name from manufacturers m, 
 +------+-------------+------+-----------------+
 6 rows in set (0.04 sec)
 
-MariaDB [mytestdb]> select * from manufacturers m, product p where m.code=p.manufacturers;
-ERROR 1146 (42S02): Table 'mytestdb.product' doesn't exist
 MariaDB [mytestdb]> select * from manufacturers m, products p where m.code=p.manufacturers;
 +------+-----------------+------+-----------------+-------+---------------+
 | Code | Name            | Code | Name            | Price | manufacturers |
@@ -803,8 +739,6 @@ MariaDB [mytestdb]> select * from manufacturers m, products p where m.code=p.man
 +------+-----------------+------+-----------------+-------+---------------+
 10 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> select * from manufacturers m JOIN products p ON m.code=p.manufacturer;
-ERROR 1054 (42S22): Unknown column 'p.manufacturer' in 'on clause'
 MariaDB [mytestdb]> select * from manufacturers m JOIN products p ON m.code=p.manufacturers;
 +------+-----------------+------+-----------------+-------+---------------+
 | Code | Name            | Code | Name            | Price | manufacturers |
@@ -822,8 +756,6 @@ MariaDB [mytestdb]> select * from manufacturers m JOIN products p ON m.code=p.ma
 +------+-----------------+------+-----------------+-------+---------------+
 10 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> select name, price, m.name from products p, manufacturers m where m.code=p.manufacturers;
-ERROR 1052 (23000): Column 'name' in field list is ambiguous
 MariaDB [mytestdb]> select p.name, price, m.name from products p, manufacturers m where m.code=p.manufacturers;
 +-----------------+-------+-----------------+
 | name            | price | name            |
@@ -889,8 +821,6 @@ MariaDB [mytestdb]> select * from products;
 +------+-----------------+-------+---------------+
 10 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> SELECT * FROM manufacturers m LEFT OUTER JOIN products p ON m.code = p.manufacturer;
-ERROR 1054 (42S22): Unknown column 'p.manufacturer' in 'on clause'
 MariaDB [mytestdb]> SELECT * FROM manufacturers m LEFT OUTER JOIN products p ON m.code = p.manufacturers;
 +------+-----------------+------+-----------------+-------+---------------+
 | Code | Name            | Code | Name            | Price | manufacturers |
@@ -909,17 +839,6 @@ MariaDB [mytestdb]> SELECT * FROM manufacturers m LEFT OUTER JOIN products p ON 
 +------+-----------------+------+-----------------+-------+---------------+
 11 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> SELECT CompanyName, Count(ProductName)
-    ->   FROM Suppliers LEFT JOIN Products
-    ->     ON Suppliers.SupplierID = Products.SupplierID
-    ->  GROUP BY
-    ->
-    -> exit
-    -> exit
-    -> exit;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'exit
-exit
-exit' at line 6
 MariaDB [mytestdb]> select * from products;
 +------+-----------------+-------+---------------+
 | Code | Name            | Price | manufacturers |
@@ -1103,8 +1022,6 @@ MariaDB [mytestdb]> select * from products;
 +------+-----------------+-------+--------------+
 11 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> insert into products values(12,'Pendrive 1',100,7);
-ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`mytestdb`.`products`, CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Manufacturer`) REFERENCES `manufacturers` (`Code`) ON DELETE SET NULL)
 MariaDB [mytestdb]> insert into manufacturers values(7, 'Lambton');
 Query OK, 1 row affected (0.03 sec)
 
