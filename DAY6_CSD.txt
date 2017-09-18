@@ -13,27 +13,6 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> use mytestdb
 Database changed
-MariaDB [mytestdb]> show tables'
-    '> ;
-    '>
-    '> ;;
-    '> Bye
-
-719531@203-IMAC08 c:\xampp
-#
-719531@203-IMAC08 c:\xampp
-# mysql -u root -p
-Enter password:
-Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 7
-Server version: 10.1.21-MariaDB mariadb.org binary distribution
-
-Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-MariaDB [(none)]> use mytestdb
-Database changed
 MariaDB [mytestdb]> show tables;
 +--------------------+
 | Tables_in_mytestdb |
@@ -45,11 +24,6 @@ MariaDB [mytestdb]> show tables;
 | t                  |
 +--------------------+
 5 rows in set (0.00 sec)
-
-MariaDB [mytestdb]> select column_name,data_type,is_nullable, column_default from information_scheme.columns where table_name='priducts' and table_schema='mytestdb';
-ERROR 1146 (42S02): Table 'information_scheme.columns' doesn't exist
-MariaDB [mytestdb]> select column_name,data_type,is_nullable, column_default from INFORMATION_SCHEMA.columns where table_name='priducts' and table_schema='mytestdb';
-Empty set (0.00 sec)
 
 MariaDB [mytestdb]> select column_name,data_type,is_nullable, column_default from INFORMATION_SCHEMA.columns where table_name='prOducts' and table_schema='mytestdb';
 +--------------+-----------+-------------+----------------+
@@ -181,91 +155,7 @@ MariaDB [INFORMATION_SCHEMA]> select * from information_schema.table_constraints
 +--------------------+-------------------+-----------------+--------------+------------+-----------------+
 2 rows in set (0.00 sec)
 
-MariaDB [INFORMATION_SCHEMA]> mysqldump --databases mytestdb > 'C:/Users/719531/Downloads/backup.sql';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump --databases mytestdb > 'C:/Users/719531/Downloads/backup.sql'' at line 1
-MariaDB [INFORMATION_SCHEMA]> mysqldump --databases mytestdb > C:/Users/719531/Downloads/backup.sql;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump --databases mytestdb > C:/Users/719531/Downloads/backup.sql' at line 1
 MariaDB [INFORMATION_SCHEMA]> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| c0717140           |
-| information_schema |
-| mysql              |
-| mytestdb           |
-| performance_schema |
-| phpmyadmin         |
-| test               |
-+--------------------+
-7 rows in set (0.00 sec)
-
-MariaDB [INFORMATION_SCHEMA]> mysqldump --databases test > C:/Users/719531/Downloads/backup.sql;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump --databases test > C:/Users/719531/Downloads/backup.sql' at line 1
-MariaDB [INFORMATION_SCHEMA]> mysqldump -P 3306 -h [ip_address] -u [uname] -p[pass] > db_backup.sql
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump -P 3306 -h [ip_address] -u [uname] -p[pass] > db_backup.sql' at line 1
-MariaDB [INFORMATION_SCHEMA]> mysqldump -P 3306 -h [69.166.117.244] -u [719531] -p[Parghi] > db_backup.sql
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump -P 3306 -h [69.166.117.244] -u [719531] -p[Parghi] > db_backup.sql' at line 1
-MariaDB [INFORMATION_SCHEMA]> mysqldump --databases test > C:\Users\719531\Downloads\backup.sql;
-ERROR: Unknown command '\U'.
-ERROR: Unknown command '\7'.
-ERROR: Unknown command '\D'.
-ERROR: Unknown command '\b'.
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump --databases test > C:\Users\719531\Downloads\backup.sql' at line 1
-MariaDB [INFORMATION_SCHEMA]> mysqldump -P 3306 -h [69.166.117.244] -u [719531] -p[Parghi] > C:/Users/719531/Downloads/db_backup.sql
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump -P 3306 -h [69.166.117.244] -u [719531] -p[Parghi] > C:/Users/719531/D' at line 1
-MariaDB [INFORMATION_SCHEMA]> echo %username%
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'echo %username%' at line 1
-MariaDB [INFORMATION_SCHEMA]> exit
-Bye
-
-719531@203-IMAC08 c:\xampp
-# mysqldump -P 3306 -h [69.166.117.244] -u [719531] -p[Parghi] > C:/Users/719531/Downloads/db_backup.sql;
-mysqldump: Got error: 2005: "Unknown MySQL server host '[69.166.117.244]' (11001)" when trying to connect
-
-719531@203-IMAC08 c:\xampp
-# mysqldump -P 11001 -h [69.166.117.244] -u [719531] -p[Parghi] > C:/Users/719531/Downloads/db_backup.sql;
-mysqldump: Got error: 2005: "Unknown MySQL server host '[69.166.117.244]' (11001)" when trying to connect
-
-719531@203-IMAC08 c:\xampp
-# echo %username%
-719531
-
-719531@203-IMAC08 c:\xampp
-# echo %userpassword%
-%userpassword%
-
-719531@203-IMAC08 c:\xampp
-# mysqldump -P 3306 -h [69.166.117.244] -u [719531] -p[719531] > C:/Users/719531/Downloads/db_backup.sql;
-mysqldump: Got error: 2005: "Unknown MySQL server host '[69.166.117.244]' (11001)" when trying to connect
-
-719531@203-IMAC08 c:\xampp
-# mysqldump -P 3306 -h [127.0.0.1.244] -u [719531] -p[719531] > C:/Users/719531/Downloads/db_backup.sql;
-mysqldump: Got error: 2005: "Unknown MySQL server host '[127.0.0.1.244]' (11001)" when trying to connect
-
-719531@203-IMAC08 c:\xampp
-# mysqldump --single-transaction -u root -p --databases mytestdb > U:/Users/719531/Downloads/backup.sql
-The system cannot find the path specified.
-
-719531@203-IMAC08 c:\xampp
-# mysqldump --single-transaction -u root -p --databases mytestdb > C:/Users/719531/Downloads/backup.sql
-Enter password:
-
-719531@203-IMAC08 c:\xampp
-# mysql -u root -p
-Enter password:
-Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 9
-Server version: 10.1.21-MariaDB mariadb.org binary distribution
-
-Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-MariaDB [(none)]> show databases;
 +--------------------+
 | Database           |
 +--------------------+
@@ -600,14 +490,6 @@ MariaDB [mytestdb]> select max(price),name from products where price in (select 
 +------------+---------+
 1 row in set (0.00 sec)
 
-MariaDB [mytestdb]> select max(price),name,m.code from products p, manufacturers m where p.manufacturer = m.manufacturer and price in (select max(price) from products);
-ERROR 1052 (23000): Column 'name' in field list is ambiguous
-MariaDB [mytestdb]> select max(price),p.code,m.name from products p, manufacturers m where p.manufacturer = m.manufacturer and price in (select max(price) from products);
-ERROR 1054 (42S22): Unknown column 'm.manufacturer' in 'where clause'
-MariaDB [mytestdb]> select max(price),p.code,m.name from products p, manufacturers m where p.manufacturer = m.manufacturers and price in (select max(price) from products);
-ERROR 1054 (42S22): Unknown column 'm.manufacturers' in 'where clause'
-MariaDB [mytestdb]> select max(price),p.code,m.name from products p, manufacturers m where p.manufacturers = m.code and price in (select max(price) from products);
-ERROR 1054 (42S22): Unknown column 'p.manufacturers' in 'where clause'
 MariaDB [mytestdb]> SELECT Products.Name, MAX(Price), Manufacturers.Name FROM Products, Manufacturers WHERE Manufacturer = Manufacturers.Code GROUP BY Manufacturers.Name;
 +------------+------------+-----------------+
 | Name       | MAX(Price) | Name            |
@@ -639,39 +521,6 @@ Query OK, 1 row affected (0.08 sec)
 
 Query OK, 1 row affected (0.04 sec)
 
-MariaDB [mytestdb]> INSERT INTO Providers(Code, Name) VALUES('HAL','Clarke Enterprises');INSERT INTO Providers(Code, Name) VALUES('RBT','Susan Calvin Corp.');INSERT INTO Providers(Code, Name) VALUES('TNBC','Skellington Supplies');
-Query OK, 1 row affected, 1 warning (0.05 sec)
-
-ERROR 1062 (23000): Duplicate entry '0' for key 'PRIMARY'
-ERROR 1062 (23000): Duplicate entry '0' for key 'PRIMARY'
-MariaDB [mytestdb]> alter table providers modify code text;
-ERROR 1170 (42000): BLOB/TEXT column 'code' used in key specification without a key length
-MariaDB [mytestdb]> drop table providers;
-Query OK, 0 rows affected (0.20 sec)
-
-MariaDB [mytestdb]> drop table provides;
-Query OK, 0 rows affected (0.16 sec)
-
-MariaDB [mytestdb]> drop table pieces;s
-Query OK, 0 rows affected (0.16 sec)
-
-    -> ^ZBye
-
-719531@203-IMAC08 c:\xampp
-# mysql -u root -p
-Enter password:
-Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 10
-Server version: 10.1.21-MariaDB mariadb.org binary distribution
-
-Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-MariaDB [(none)]> use mytestdb;
-Database changed
-MariaDB [mytestdb]> create table pieces(code int primary key, name text);\
-Query OK, 0 rows affected (0.34 sec)
 
 MariaDB [mytestdb]> create table providers(code text primary key, name text);
 ERROR 1170 (42000): BLOB/TEXT column 'code' used in key specification without a key length
