@@ -11,24 +11,6 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> show databasesl
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databasesl' at line 1
-MariaDB [(none)]> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| c0717140           |
-| examc0719531       |
-| information_schema |
-| mysql              |
-| mytestdb           |
-| performance_schema |
-| phpmyadmin         |
-| test               |
-+--------------------+
-8 rows in set (0.00 sec)
-
 MariaDB [(none)]> use mytestdb;
 Database changed
 MariaDB [mytestdb]> use examc0719531;
@@ -706,16 +688,6 @@ MariaDB [mytestdb]> select * from v2;
 +------+------------+
 5 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> create table audit(opsId int auto_increment primary key, tableName varchar(50) NOT NULL, opsName varchar(15) NOT NULL, ops_date date default curdate());
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'curdate())' at line 1
-MariaDB [mytestdb]> create table audit(opsId int auto_increment primary key, tableName varchar(50) NOT NULL, opsName varchar(15) NOT NULL, ops_date date default currdate());
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'currdate())' at line 1
-MariaDB [mytestdb]> create table audit(opsId int auto_increment primary key, tableName varchar(50) NOT NULL, opsName varchar(15) NOT NULL, ops_date date default current_date());
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'current_date())' at line 1
-MariaDB [mytestdb]> create table audit(opsId int auto_increment primary key, tableName varchar(50) NOT NULL, opsName varchar(15) NOT NULL, ops_date date default current_date);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'current_date)' at line 1
-MariaDB [mytestdb]> create table audit(opsId int auto_increment primary key, tableName varchar(50) NOT NULL, opsName varchar(15) NOT NULL, ops_date date default current_date());
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'current_date())' at line 1
 MariaDB [mytestdb]> create table audit(opsId int auto_increment primary key, tableName varchar(50) NOT NULL, opsName varchar(15) NOT NULL, ops_date datetime default current_timestamp);
 Query OK, 0 rows affected (0.56 sec)
 
@@ -1012,9 +984,6 @@ MariaDB [mytestdb]> select * from audit;
 +-------+-----------+---------+---------------------+
 3 rows in set (0.00 sec)
 
-MariaDB [mytestdb]> show triggersl
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'triggersl' at line 1
 MariaDB [mytestdb]> show triggers;
 +-----------------------+--------+----------+-----------------------------------------------------------------------------------------+--------+---------+--------------------------------------------+----------------+----------------------+----------------------+--------------------+
 | Trigger               | Event  | Table    | Statement                                                                               | Timing | Created | sql_mode                                   | Definer        | character_set_client | collation_connection | Database Collation |
